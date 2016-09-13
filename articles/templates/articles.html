@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/resource/static/css/common.css">
+    <link rel="stylesheet" href="/articles/static/css/articles.css">
+    <meta name="viewport"content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <title>Pencil - Articles</title>
+</head>
+<body>
+    <!--——————————顶部_begin-——————————-->
+    <div class="top">
+        <div class="logo">
+            <a href="/"><img src="/resource/static/images/logo.png"  alt=""></a>
+        </div>
+        <div class="search">
+            <form action="/articles/search" method="get">
+                <input type="search" name="keywords" id="search" placeholder="文章搜索">
+            </form>
+        </div>
+    </div>
+
+    <div class="menu">
+        <div class="topLine" id="line1"></div>
+        <div class="topLine" id="line2"></div>
+        <div class="topLine" id="line3"></div>
+    </div>
+
+    <div class="header">
+        <div class="topList">
+<!--             <iframe id="music" frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=110 src="http://music.163.com/outchain/player?type=0&id=375658300&auto=1&height=90"></iframe> -->
+            <ul>
+                <li><a href="/"  class="menuList" id="1" >Home</a></li>
+                <li><a href="/articles" class="menuList" id="2">Articles</a></li>
+                <li><a href="/" class="menuList" id="3">About</a></li>
+                <li><a href="/" class="menuList" id="4">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--——————————顶部_end-——————————-->
+    
+    <!--——————————主部_begin-——————————-->
+        <div class="main">
+            <div class="articles">
+                {% for Article_obj in Article %}
+                <div class="article">
+                    <a href="/articles/{{ Article_obj.article_id}}">{{ Article_obj.title}}</a>
+                    <div class="content">
+                        <nobr>{{ Article_obj.content | safe|truncatewords_html:30}}</nobr>
+                    </div>
+                    <a href="/articles/{{ Article_obj.article_id}}">阅读全文</a>
+                </div>
+                {% empty %}
+                <div class="nfound">Sorry~ No relevant articles were found</div>
+                <div class="nfound">抱歉~ 未找到相关的文章</div>
+                {% endfor %}
+            </div>
+<!--             <div class="sort">
+                <div class="heading">Category</div>
+                {% for category_obj in category %}
+                <div class="sort_content">
+                    <div id="{{ category_obj.id }}" class="spread">+</div>  
+                    <div class="sort_name"><a href="/articles/search?keywords={{ category_obj.sort_name }}&type=1">{{ category_obj.sort_name }}({{ category_obj.dcount }})</a></div>
+                    <div id="detail{{ category_obj.id }}" class="detail">
+                        <ul>
+                            {% for article in category_obj.articles %}
+                            <li><a href="/articles/{{ article.article_id.article_id}}">{{ article.article_id.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="tag" id="tags">
+                <div class="heading">Tag</div>
+                {% for tag in tags %}
+                <a href="/articles/search?keywords={{ tag.Tag_name }}&type=2">{{ tag.Tag_name }}</a>
+                {% endfor %}
+            </div> -->
+        </div>
+    <!--——————————主部_end-——————————-->
+
+    <!--——————————底部_begin-——————————-->
+    <div class="copyright" align="center">
+        <span>Copyright © 2016 Pencilsky.cn All Rights Reserved | 粤ICP备16026542号-1</span>
+    </div>
+    <!--——————————底部_end-——————————-->
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="/articles/static/js/articles.js"></script>
+<script src="/resource/static/js/common.js"></script>
+</html>

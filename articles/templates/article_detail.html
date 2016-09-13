@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/css/common.css">
+    <link rel="stylesheet" href="/static/css/article_detail.css">
+    <meta name="viewport"content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="/static/fonts/font-awesome-4.2.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/simditor.css">
+    <link rel="stylesheet" href="/static/css/code-style-github.css">
+    <title>{{ Article.title }}</title>
+</head>
+<body>
+    <!--——————————Menu_begin-——————————-->
+    <div class="menu">
+        <ul>
+            <li class="ul-focus">
+                <i class="fa fa-search" style="float: left;font-size: 20px;color: #737d83;"></i>
+                <form action="/search/" method="get">
+                    <input type="search" name="keywords" id="search" placeholder="文章搜索">
+                </form>
+                <div class="closeMenu">✖︎</div>
+            </li>
+            <li><a href="/"><i class="fa fa-home"></i><span>Home</span></a></li>
+            <li><a href="/"><i class="fa fa-user"></i><span>About</span></a></li>
+            <li><a href="/"><i class="fa fa-comment"></i><span>Contact</span></a></li>
+            <li class="category">
+                <a href="#"><i class="fa fa-book"></i><span>Categories</span><i class="fa fa-sort-desc" id="category" style="padding-left: 60px;"></i></a>
+                <ul>
+                    {% for category_obj in category %}
+                    <li class="ul-focus"><a href="/search?keywords={{ category_obj.sort_name }}&type=1">{{ category_obj.sort_name }}({{ category_obj.dcount }})</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <li class="archive"><a href="#"><i class="fa fa-calendar"></i><span>Date Archive</span></a></li>
+            <li class="tags">
+                <span>Tags</span>
+                <div class="tags_container">
+                    {% for tag in tags %}
+                    <a href="/search?keywords={{ tag.Tag_name }}&type=2">{{ tag.Tag_name }}</a>
+                    {% endfor %}
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--——————————Menu_end-——————————-->
+    <div class="container">
+        <!--——————————顶部_begin-——————————-->
+        <div class="top">
+            <div class="logo">
+                <a href="/"><img src="/static/images/logo.png"  alt="Home"></a>
+            </div>
+            <div class="menuLine">
+                <div class="topLine" id="line1"></div>
+                <div class="topLine" id="line2"></div>
+                <div class="topLine" id="line3"></div>
+            </div>
+        </div>
+        <!--——————————顶部_end-——————————-->
+
+        <!--——————————主部_begin-——————————-->
+        <div class="main">
+            <div class="article">
+                <div class="article_info">
+                    <h1 class="title">{{ Article.title }}</h1>
+                    <br>
+                    <h4 class="date">
+                    <i class="fa fa-user"></i> {{ Article.author }} | 
+                    <i class="fa fa-clock-o"></i>{{ Article.date | date:"Y-n-j" }} | 
+                    <a class="link" id="look_comment"><i class="fa fa-comment"></i>({{ comment.sum }})</a></h4>
+                    <h4 class="other_info"><i class="fa fa-book"></i> <a href="/search?keywords={{ Article.sort }}&type=1" class="link">{{ Article.sort}}</a>   <i class="fa fa-tags"></i>{% for tag in article_tags %} <a href="/search?keywords={{ tag }}&type=2" class="link">{{ tag }}</a>{% if not forloop.last%},{% endif %} {% endfor %}</h2>
+                </div>
+                <div class="content">
+                    {{ Article.content | safe}}
+                </div>
+                
+            </div>
+
+            <div class="share">
+                <ul>
+                    <li><i class="fa fa-share-alt"></i></li>
+                    <li><i class="fa fa-weixin"></i></li>
+                    <li><i class="fa fa-weibo"></i></li>
+                    <li><a title="分享到QQ" href="#" target="_blank" rel="nofollow" onclick="$(this).attr('href',getSocialLink('qq'));"><i class="fa fa-qq"></i></a></li>
+                    <li><i class="fa fa-twitter"></i></li>
+                </ul>
+            </div>
+            
+            <div class="art_oth">
+                <div class="art_pre">
+                    {% if article_last.id == -1 %}
+                    <a>
+                    {% else %}
+                    <a href="http://pencilsky.cn/articles/{{ article_last.id }}/">
+                    {% endif %}
+                        <span>&lt;&lt; PREVIOUS</span>
+                        <br>
+                        <span class="ath_title">{{ article_last.title }}</span>
+                    </a>
+                </div>
+                <div class="art_next">
+                    {% if article_next.id == -1 %}
+                    <a>
+                    {% else %}
+                    <a href="http://pencilsky.cn/articles/{{ article_next.id }}/">
+                    {% endif %}
+                        <span>NEXT &gt;&gt;</span>
+                        <br>
+                        <span class="ath_title">{{ article_next.title }}</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="comment">
+                <h3 id="position_comment">{{ comment.sum }}个评论</h3>
+                {% for comment_info in comment.content %}
+                <div class="comment_info">
+                    {% for comment_info_detail in comment_info %}
+                    <div class="com_detail">
+                        <img src="{{ comment_info_detail.user.userprofile.HeadImg }}" height="32" width="32" alt="" class="head_img">
+                        <div class="comment_content">
+                            <span class="triangle"></span>
+                            <span class="reviewer">{{ comment_info_detail.user.userprofile.Name }}</span>
+                            {{ comment_info_detail.content | safe }}
+                            <div class="time"><span style="color:rgb(164,164,164);font-size:0.8em;"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ comment_info_detail.date|date:"Y-m-d H:i:s" }}</span></div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <span class="reply" id="{{ comment_info.0.id }}"><i class="fa fa-reply"></i>回复</span>
+                </div>
+                {% endfor %}
+                <div class="comment_input" id="position_reply">
+                    <form action="{{ now_url }}comment/" method="post" onsubmit="return sync_content()">
+                        {% csrf_token %}
+                        <input type="text" name="rid" style="display:none;" id="rid" value="-1">
+                        <input type="text" name="head_img_url" style="display:none;" value="{{ head_img }}">
+                        <input type="text" name="next_url" style="display:none;" value="{{ now_url }}">
+                        <input type="text" name="ip" style="display:none;" id="ip" value="">
+                        <input type="text" name="isp" style="display:none;" id="isp" value="">
+                        <input type="text" name="browser" style="display:none;" id="browser" value="">
+                        <input type="text" name="os" style="display:none;" id="os" value="">
+                        <input type="text" name="openid" style="display:none;" value="{{ open_id }}">
+                        <h4>发表评论</h4>
+                        {% if head_img == '/static/images/logo.png' %}
+                        <div class="comment_method">
+                            <input class="com_met" name="login" type="radio" value="0" checked="checked"/><label>账号登录</label>
+                            <input class="com_met" name="login" type="radio" value="1" /><label>游客模式</label>
+                        </div>
+                        <div class="visitor">
+                            <label for="name">Name:</label>
+                            <input type="text" name="name" id="name" required="required">
+                            <br>
+                            <label for="email">Email:</label>
+                            <input type="email" name="email" id="email">
+                        </div>
+                        {% endif %}
+                        <div class="login">
+                            <img src="{{ head_img }}">
+                            {% if head_img == '/static/images/logo.png' %}
+                            <div><a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101337112&redirect_uri=http://pencilsky.cn/articles/?url={{ now_url }}&scope=get_user_info" class="qqlogin"><i class="fa fa-qq"></i> QQ登录</a></div>
+                            <div><a class="wechatlogin" onclick="wechatlogin()" style="display: none;"><i class="fa fa-wechat"></i> 微信登录</a></div>
+                            {% else %}
+                            <div><span> {{ user_name }}</span></div>
+                            <div><a href="/logout/?redirect={{ now_url }}" class="min_btn"> 退出登录</a></div>
+                            {% endif %}
+                        </div>
+                        <div><span class="btn" id="reply_btn" style="display: none; margin-top: 10px;margin-bottom:10px;"></span></div>
+                        <textarea id="editor" placeholder="" autofocus name="content" value=""></textarea>
+                        <input type="submit" value="发表评论" class="submit btn">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--——————————主部_end-——————————-->
+
+        <!--——————————底部_begin-——————————-->
+        <div class="footer">
+            <div class="copyright" align="center">
+                <span style="display: block;">粤ICP备16026542号-1</span>
+                <span>Copyright © 2016 Pencilsky.cn All Rights Reserved</span>
+            </div>
+        </div>
+        <!--——————————底部_end-——————————-->
+    </div>
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- <script src="/static/ueditor/ueditor.parse.js"></script> -->
+<script src="/static/js/module.js"></script>
+<script src="/static/js/hotkeys.js"></script>
+<script src="/static/js/simditor.js"></script>
+<script src="/static/js/article_detail.js"></script>
+<script src="/static/js/common.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
+<script >hljs.initHighlightingOnLoad();</script>
+</html>

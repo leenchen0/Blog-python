@@ -1,0 +1,15 @@
+/weixin
+/uploads
+/static
+/media
+/gobye
+/DjangoUeditor
+
+articles/migrations/*
+DjangoWangEditor/migrations/*
+home/migrations/*
+gobye/migrations/*
+
+*.unuse
+*.pyc
+databaseSettings.py

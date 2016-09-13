@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pencil's Blog</title>
+</head>
+<script language="javascript" type="text/javascript">
+{% if msg == 1 %}
+alert("登录失败:access_token获取失败");
+{% elif msg == 2 %}
+alert("登录失败:openid获取失败");
+{% elif msg == 3 %}
+alert("登录失败:用户信息获取失败");
+{% elif msg == 4 %}
+alert("登录失败:用户认证失败");
+{% elif msg == 5 %}
+alert("评论失败:请登录后再评论，或以游客模式评论。");
+{% elif msg == 6 %}
+alert("评论失败:评论模式代码错误");
+{% elif msg == 7 %}
+alert("评论失败:未找到所要评论的文章");
+{% elif msg == 8 %}
+alert("回复失败:未找到所要回复的评论");
+{% elif msg == 8 %}
+alert("未找到该文章！");
+{% endif %}
+window.location.href="{{ next_url }}"; 
+</script>
+<body>
+</body>
+</html>

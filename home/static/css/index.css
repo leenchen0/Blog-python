@@ -1,0 +1,94 @@
+
+body {
+    width: 100%;
+    background-size: 100vw 100vh;
+}
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+}
+
+pre {
+    word-wrap: break-word;
+}
+.main {
+    padding-top: 60px;
+    width: 100%;
+}
+.content {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.content p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.content * {
+    word-break:normal;
+    word-wrap : break-word;
+    white-space: normal;
+}
+.articles {
+    max-width: 1000px;
+    margin: 0px auto;
+}
+.article {
+    margin-top: 20px;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 15px;
+}
+.article .date {
+    display: block;
+    margin-left: 10px;
+    margin-top: 15px;
+    color: #9f9f9f;
+    font-size: 12px;
+}
+
+.article .title {
+    color: black;
+    font-size: 28px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+.article .title:hover {
+    color: #E26072;
+}
+
+.nfound {
+    color: red;
+    font-size: 26px;
+    text-align: center;
+}
+.readmore {
+    font-size: 12px;
+    display: block;
+    width: 50px;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: #1C1D24;
+    border-radius: 5px;
+    color: white !important;
+}
+.readmore:hover {
+    background-color: #D0333A;
+}
+
+/*————————begin_Main部分css——————————*/
+/*#content {
+    background-color: rgba(255,255,255,.5);
+    margin-left: 2%;
+    float: left;
+}
+#process {
+    float: right;
+    background-color: rgba(255,255,255,.5);
+    margin-right: 2%;
+    width: 5%;
+}*/
+/*————————end_Main部分css——————————*/
+

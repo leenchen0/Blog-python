@@ -1,0 +1,219 @@
+.menu-open {
+    -webkit-transform: translate3d(-250px, 0, 0);
+    -moz-transform: translate3d(-250px, 0, 0);
+    -ms-transform: translate3d(-250px, 0, 0);
+    transform: translate3d(-250px, 0, 0);
+}
+
+.container, .menu {
+    -ms-transition: -ms-transform .3s cubic-bezier(0.7,0,0.3,1);
+    -webkit-transition: -webkit-transform .3s cubic-bezier(0.7,0,0.3,1);
+    -moz-transition: -moz-transform .3s cubic-bezier(0.7,0,0.3,1);
+    transition: transform .3s cubic-bezier(0.7,0,0.3,1);
+}
+
+.ul-focus {
+    background-color: #1C1D24;
+}
+
+.menu {
+    margin-right: -250px;
+    background-color: #12131a;
+    position: fixed;
+    right: 0px;
+    width: 250px;
+    z-index: 2;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.menu>ul>li {
+    min-height: 50px;
+}
+.menu ul {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    list-style-type: none;
+}
+.menu li a {
+    color: #737d83;
+    font-size: 20px;
+    line-height: 50px;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+.menu li a span {
+    padding-left: 10px;
+}
+.menu li a:hover {
+    color: #D0333A;
+    background-color: #1C1D24;
+}
+.menu li i {
+    line-height: 50px;
+    padding-left: 20px;
+}
+
+#search{
+    background-color: #1C1D24;
+    font-size: 16px;
+    float: left;
+    margin-top: 9px;
+    outline: none;
+    border: 0;
+    width: 140px;
+    height: 32px;
+    color: #E6E6E6;
+    -webkit-appearance:none;
+}
+.closeMenu {
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    float: right;
+    color: #BBBBBB;
+    font-size: 20px;
+    width: 50px;
+    height: 100%;
+}
+.closeMenu:hover {
+    background-color: #D60B00;
+    color: white;
+}
+
+.category {
+    transition: height 0.8s;
+}
+
+.category-open {
+    height: 30px !important;
+}
+
+.category ul li a{
+    height: 0px;
+    overflow: hidden;
+}
+
+.category li a{
+    line-height: 30px;
+    height: 30px;
+    font-size: 16px;
+    padding-left: 50px;
+    width: 200px !important;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+.tags span {
+    display: block;
+    border-top: 1px solid #ccc;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    color: #A4B2BA;
+    font-size: 20px;
+}
+.tags_container {
+    width: 210px;
+    margin-left: 20px;
+}
+.tags a {
+    color: #E0E0E0 !important;
+    font-size: 16px !important;
+    white-space:nowrap;
+    line-height: 40px !important;
+    height: 30px !important;
+    margin-right: 10px;
+    display: inline !important;
+    background-color: #414a55;
+    padding: 5px;
+}
+.tags a:hover {
+    background-color: #D0333A !important;
+    color: white !important;
+}
+
+
+body {
+    margin: 0px;
+    padding: 0px;
+    /*background: repeat url(../images/tileable_wood_texture.png) ;*/
+}
+* {
+    font-family: "Trebuchet MS";
+}
+a,.closeMenu {
+    transition: all 0.3s;
+}
+a {
+    text-decoration: none;
+}
+/*————————begin_TOP部分css——————————*/
+.top {
+    position: fixed;
+    background-color: #1C1D24;
+    color: #E1E1E1;
+    width: 100%;
+    height: 50px;
+    z-index: 2;
+}
+.logo {
+    float: left;
+    margin-top: 4px;
+    width: 182px;
+    height: 42px;
+}
+.logo img{
+    width: 42px !important;
+    height: 42px !important;
+    border: 0;
+}
+.logo a::after {
+    content:"Pencil's Blog";
+    color: #E8E8E8;
+    font-style: italic;
+    font-size: 24px;
+    margin-top: 5px;
+    float: right;
+}
+.menuLine {
+    float: right;
+    margin-top: 10px;
+    margin-right: 20px;
+    cursor: pointer;
+    height: 42px;
+    width: 36px;
+}
+.topLine {
+    margin-top: 6px;
+    margin-left: 3px;
+    width: 30px;
+    height: 2px;
+    background-color: rgb(188,188,188);
+    transition: box-shadow 0.5s, transform 0.5s; 
+}
+/*————————end_TOP部分css——————————*/
+
+/*————————begin_copyright部分css——————————*/
+.footer {
+    background-color: #1C1D24;
+    margin-top: 15px;
+    width: 100%;
+}
+.copyright {
+    padding: 0.6em 0em;
+    width: 100%;
+    z-index: 1;
+}
+.copyright span {
+    font-size: 0.8em;
+    text-align: center;
+    color: #999;
+}
+/*————————end_copyright部分css——————————*/
+
+
+@media screen and (max-width: 450px) {
+
+}

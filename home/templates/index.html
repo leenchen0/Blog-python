@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta property="qc:admins" content="1447302056314331636">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/common.css">
+    <link rel="stylesheet" href="/static/fonts/font-awesome-4.2.0/css/font-awesome.min.css">
+    <meta name="viewport"content="width=device-width, initial-scale=1" />
+    <title>Pencil - Home</title>
+</head>
+<body>
+    <!--——————————Menu_begin-——————————-->
+    <div class="menu">
+        <ul>
+            <li class="ul-focus">
+                <i class="fa fa-search" style="float: left;font-size: 20px;color: #737d83;"></i>
+                <form action="search/" method="get">
+                    <input type="search" name="keywords" id="search" placeholder="文章搜索">
+                </form>
+                <div class="closeMenu">✖︎</div>
+            </li>
+            <li><a href="/"><i class="fa fa-home"></i><span>Home</span></a></li>
+            <li><a href="/"><i class="fa fa-user"></i><span>About</span></a></li>
+            <li><a href="/"><i class="fa fa-comment"></i><span>Contact</span></a></li>
+            <li class="category">
+                <a href="#"><i class="fa fa-book"></i><span>Categories</span><i class="fa fa-sort-desc" id="category" style="padding-left: 60px;"></i></a>
+                <ul>
+                    {% for category_obj in category %}
+                    <li class="ul-focus">
+                        <a href="/search?keywords={{ category_obj.sort_name }}&type=1">{{ category_obj.sort_name }}({{ category_obj.dcount }})</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <li class="archive"><a href="#"><i class="fa fa-calendar"></i><span>Date Archive</span></a></li>
+            <li class="tags">
+                <span>Tags</span>
+                <div class="tags_container">
+                    {% for tag in tags %}
+                    <a href="/search?keywords={{ tag.Tag_name }}&type=2">{{ tag.Tag_name }}</a>
+                    {% endfor %}
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--——————————Menu_end-——————————-->
+    <div class="container">
+        <!--——————————顶部_begin-——————————-->
+        <div class="top">
+            <div class="logo">
+                <a href="/"><img src="/static/images/logo.png"  alt="Home"></a>
+            </div>
+            <div class="menuLine">
+                <div class="topLine" id="line1"></div>
+                <div class="topLine" id="line2"></div>
+                <div class="topLine" id="line3"></div>
+            </div>
+        </div>
+        <!--——————————顶部_end-——————————-->
+
+        <!--——————————主部_begin-——————————-->
+        <div class="main">
+            <div class="articles">
+                {% for Article_obj in Article %}
+                <div class="article">
+                    <a href="/articles/{{ Article_obj.article_id}}" class="title">{{ Article_obj.title}}</a>
+                    <span class="date">Date: {{ Article_obj.date | date:"F j, Y"}}</span>
+                    <div class="content">
+                        <nobr>{{ Article_obj.content | safe|truncatewords_html:30}}</nobr>
+                    </div>
+                    <a href="/articles/{{ Article_obj.article_id}}" class="readmore">阅读全文</a>
+                </div>
+                {% empty %}
+                <div class="nfound">Sorry~ No relevant articles were found</div>
+                <div class="nfound">抱歉~ 未找到相关的文章</div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+        <!--——————————主部_end-——————————-->
+
+        <!--——————————底部_begin-——————————-->
+        <div class="footer">
+            <div class="copyright" align="center">
+                <span style="display: block;">粤ICP备16026542号-1</span>
+                <span>Copyright © 2016 Pencilsky.cn All Rights Reserved</span>
+            </div>
+        </div>
+        <!--——————————底部_end-——————————-->
+    </div>
+
+</body>
+<script type="text/javascript">
+    
+</script>
+<script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="/static/js/index.js"></script>
+<script src="/static/js/common.js"></script>
+</html>

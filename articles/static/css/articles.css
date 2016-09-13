@@ -1,0 +1,152 @@
+* {
+    font-size: 16px;
+}
+pre {
+    word-wrap: break-word;
+}
+.main {
+    position: absolute;
+    width: 100%;
+}
+.content {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.content span, .content p{
+    display: block;
+    white-space:pre-wrap;
+    word-wrap : break-word ;
+}
+.articles {
+    max-width: 1000px;
+    margin: 0px auto;
+}
+.article {
+    margin-top: 20px;
+    width: 100%;
+}
+.article a:hover {
+    color: #E26072;
+}
+.article a {
+    margin-left: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+}
+.article a:nth-child(1) {
+    font-size: 28px;
+    border-bottom: 2px solid #FF5505;
+}
+.article a:nth-child(3) {
+    margin-right: 20px;
+    margin-top: 5px;
+    float: right;
+}
+.article p {
+    font-size: 12px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+    color: black;
+}
+
+.nfound {
+    color: red;
+    font-size: 26px;
+    text-align: center;
+}
+
+
+.heading {
+    height: 42px;
+    font-size: 24px;
+    line-height: 42px;
+    border-left: 5px solid #FFA800;
+    border-radius: 3px 0px 0px 0px;
+    border-bottom: 1px solid #9E9E9E;
+    padding-left: 5px;
+    color: #585858;
+}
+.sort {
+    background-color: rgba(255,255,255,0.5);
+    border: 1px #FFFFFF solid;
+    float: right;
+    width: 20%;
+    margin-right: 2%;
+    border-radius: 3px;
+    overflow: auto;
+}
+
+.sort_content {
+    margin: 10px;
+}
+
+.spread {
+    margin-top: 3px;
+    border: solid 1px black;
+    width: 10px;
+    height: 10px;
+    font-size: 18px;
+    line-height: 10px;
+    text-align: center;
+    float: left;
+    cursor: pointer;
+}
+
+.sort_name {
+    margin-left: 25px;
+}
+
+.sort_name a {
+    font-size: 16px;
+    color: black;
+}
+.sort_name a:hover {
+    color: #F00;
+}
+
+.detail {
+    margin-left: 25px;
+    display: none;
+}
+
+.detail li {
+    list-style-type: none;
+}
+
+.detail li a {
+    color: #282928;
+}
+
+.detail li a:hover {
+    color: #FF3936;
+}
+
+.tag {
+    background-color: rgba(255,255,255,0.5);
+    border: 1px #FFFFFF solid;
+    float: right;
+    width: 20%;
+    margin-right: 2%;
+    border-radius: 3px;
+    margin-top: 20px;
+    overflow: auto;
+}
+
+#tags a{
+    margin: 8px;
+}
+#tags a:hover{ color:#F00; text-decoration:underline;}
+
+@media screen and (max-width: 800px) {
+    .tag {
+        display: none;
+    }
+    .sort {
+        display: none;
+    }
+    .articles {
+        width: 96%;
+    }
+}
