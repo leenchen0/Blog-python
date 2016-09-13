@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.db import models
 
 from django.contrib.auth.models import User
-from DjangoUeditor.models import UEditorField
+#from DjangoUeditor.models import UEditorField
 from DjangoWangEditor.models import WangEditorField
 # Create your models here.
 

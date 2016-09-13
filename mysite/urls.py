@@ -35,9 +35,9 @@ urlpatterns = [
 
     url(r'^logout/', include('articles.urls')),
 
-    url(r'gobye/',include('gobye.urls')),
+    #url(r'gobye/',include('gobye.urls')),
 
-    url(r'wechat/', include('weixin.urls')),
+    #url(r'wechat/', include('weixin.urls')),
 
     url(r'^wangeditor/', include('DjangoWangEditor.urls')),
 ]

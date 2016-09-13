@@ -43,12 +43,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'gobye',
+    #'gobye',
     'articles',
     'home',
-    'DjangoUeditor',
-    'weixin',
-    'wechat_sdk',
+    #'DjangoUeditor',
+    #'weixin',
+    #'wechat_sdk',
     'DjangoWangEditor',
 ]
 
