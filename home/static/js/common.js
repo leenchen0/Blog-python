@@ -42,9 +42,9 @@ window.onload = function() {
     });
 
     $(".closeMenu").click(function() {
-        $(".menu").toggleClass("menu-open");
-        $(".container").toggleClass("menu-open");
         $(".menuLine").toggleClass("closeTopLine");
+        $(".container").toggleClass("menu-open");
+        $(".menu").toggleClass("menu-open");
         recoverTopLine();
     });
 
