@@ -73,7 +73,7 @@ def List():
 
 def Detail ( request, article_id ):
     code = request.GET.get("code", "none")
-    head_img = '/resource/static/images/logo.png'
+    head_img = '/static/images/logo.png'
     state = 0
     open_id = ''
     user_name = ''
